@@ -1,4 +1,17 @@
-// imitation of new page loading
+$('.badge').on("click", function() {
+	$('.wrapper').fadeOut(2000, function() {
+		$('.cat-wrapper').fadeIn(2000).css("display", "flex");
+	});
+});
+
+$('#transition').on("click", function() {
+  loadCSS();
+	$('.cat-wrapper').fadeOut(2000, function() {
+		$('.container').show();
+		loader(2);
+	})
+});
+
 function loader(delay) {
   var $body = $('body');
   setTimeout(function(){
@@ -15,19 +28,14 @@ function loader(delay) {
 
   setTimeout(function(){
     $('.container').remove();
-    initGiftBox();
+    $('video').show();
   }, delay + 3800);
+}
+
+function loadCSS() {
+  $('head').append('<link rel="stylesheet" type="text/css" href="transition.css">');
 }
 
 function getRandomNumber(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
-}
-
-
-function clickme() {
-  $('.wrapper').css("pointer-events", "none");
-  $('.wrapper').fadeOut(2000, function() {
-    $('.container').show();
-    loader(2);
-  });
 }
